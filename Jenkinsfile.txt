@@ -5,13 +5,13 @@ pipeline {
         stage('SCM Checkout') {
             steps {
                 retry(3) {
-                    git branch: 'main', url: 'https://github.com/razilahamed/Freelance_sample.git'
+                    git branch: 'master', url: 'https://github.com/razilahamed/Fiver_Cloning.git'
                 }
             }
         }
         stage('Build Backend Docker Image') {
             steps {  
-                dir('Backend') {
+                dir('backend') {
                     bat 'docker build -t razilahamed/backend:%BUILD_NUMBER% .'
                 }
             }
