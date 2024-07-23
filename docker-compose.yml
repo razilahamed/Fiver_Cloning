@@ -5,7 +5,7 @@ services:
     ports:
       - "5173:5173"
   backend:
-    build: ./Backend
+    build: ./backend
     ports:
       - "8800:8800"
     depends_on:
