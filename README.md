@@ -1,5 +1,5 @@
 
-# Freelancing Web Application
+# Job Portal Web Application
 
 ## Project Overview
 
