@@ -31,7 +31,7 @@ This project is a web application developed to provide a platform for users to s
 Install my-project with npm
 
 ```bash
-git clone https://github.com/razilahamed/Freelance_sample.git
+git clone https://github.com/razilahamed/Fiver_Cloning.git
 cd Freelance_sample
 
 ```
