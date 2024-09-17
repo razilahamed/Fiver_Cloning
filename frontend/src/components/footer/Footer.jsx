@@ -68,8 +68,8 @@ function Footer() {
         <hr />
         <div className="bottom">
           <div className="left">
-            <h2>Fiverr</h2>
-            <span>© Razil Ahamed</span>
+            <h2>fiverr</h2>
+            <span>© Fiverr International Ltd. 2023</span>
           </div>
           <div className="right">
             <div className="social">
@@ -85,7 +85,7 @@ function Footer() {
             </div>
             <div className="link">
               <img src="/img/coin.png" alt="" />
-              <span>LKR</span>
+              <span>USD</span>
             </div>
             <img src="/img/accessibility.png" alt="" />
           </div>

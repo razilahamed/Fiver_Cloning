@@ -1,10 +1,9 @@
-import React, { useRef, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import "./Gigs.scss";
-// import { gigs } from "../../data";
 import GigCard from "../../components/gigCard/GigCard";
+import { useQuery } from "@tanstack/react-query";
 import newRequest from "../../utils/newRequest";
+import { useLocation } from "react-router-dom";
 
 function Gigs() {
   const [sort, setSort] = useState("sales");
@@ -14,13 +13,12 @@ function Gigs() {
 
   const { search } = useLocation();
 
-  const { isPending, error, data, refetch } = useQuery({
-    queryKey: ["repoData"],
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["gigs"],
     queryFn: () =>
       newRequest
         .get(
-          `/gigs${search}`
-          // need to add this &min=${minRef.current}&max=${maxRef.current?.value}
+          `/gigs${search}&min=${minRef.current.value}&max=${maxRef.current.value}&sort=${sort}`
         )
         .then((res) => {
           return res.data;
@@ -34,6 +32,10 @@ function Gigs() {
     setOpen(false);
   };
 
+  useEffect(() => {
+    refetch();
+  }, [sort]);
+
   const apply = () => {
     refetch();
   };
@@ -41,13 +43,10 @@ function Gigs() {
   return (
     <div className="gigs">
       <div className="container">
-        <span className="breadcrumbs">
-          Fiverr &gt; Graphics &amp; Design &gt;&apos;
-        </span>
+        <span className="breadcrumbs">Liverr > Graphics & Design ></span>
         <h1>AI Artists</h1>
         <p>
-          Explore the boundaries of art and technology with Fiverr&apos;s AI
-          artists
+          Explore the boundaries of art and technology with Liverr's AI artists
         </p>
         <div className="menu">
           <div className="left">
@@ -75,13 +74,11 @@ function Gigs() {
           </div>
         </div>
         <div className="cards">
-          {isPending
-            ? "Loading"
+          {isLoading
+            ? "loading"
             : error
-            ? error.message
-            : // ? "Something went wrong"
-
-              data.map((gig) => <GigCard key={gig._id} item={gig} />)}
+            ? "Something went wrong!"
+            : data.map((gig) => <GigCard key={gig._id} item={gig} />)}
         </div>
       </div>
     </div>

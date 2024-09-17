@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import "./Navbar.scss";
 import newRequest from "../../utils/newRequest";
+import "./Navbar.scss";
 
 function Navbar() {
   const [active, setActive] = useState(false);
@@ -20,6 +20,8 @@ function Navbar() {
     };
   }, []);
 
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -32,14 +34,12 @@ function Navbar() {
     }
   };
 
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
   return (
     <div className={active || pathname !== "/" ? "navbar active" : "navbar"}>
       <div className="container">
         <div className="logo">
           <Link className="link" to="/">
-            <span className="text">Fiverr</span>
+            <span className="text">fiverr</span>
           </Link>
           <span className="dot">.</span>
         </div>
@@ -50,7 +50,7 @@ function Navbar() {
           {!currentUser?.isSeller && <span>Become a Seller</span>}
           {currentUser ? (
             <div className="user" onClick={() => setOpen(!open)}>
-              <img src={currentUser.img || "/img/noavatar.png"} alt="" />
+              <img src={currentUser.img || "/img/noavatar.jpg"} alt="" />
               <span>{currentUser?.username}</span>
               {open && (
                 <div className="options">
@@ -78,9 +78,7 @@ function Navbar() {
             </div>
           ) : (
             <>
-              <Link to="/login" className="link">
-                Sign in
-              </Link>
+              <Link to="/login" className="link">Sign in</Link>
               <Link className="link" to="/register">
                 <button>Join</button>
               </Link>

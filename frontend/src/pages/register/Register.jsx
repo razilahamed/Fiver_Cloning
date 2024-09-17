@@ -63,14 +63,14 @@ function Register() {
             onChange={handleChange}
           />
           <label htmlFor="">Password</label>
-          <input name="password" type="password" placeholder="password" onChange={handleChange} />
+          <input name="password" type="password" onChange={handleChange} />
           <label htmlFor="">Profile Picture</label>
           <input type="file" onChange={(e) => setFile(e.target.files[0])} />
           <label htmlFor="">Country</label>
           <input
             name="country"
             type="text"
-            placeholder="Sri Lanka"
+            placeholder="Usa"
             onChange={handleChange}
           />
           <button type="submit">Register</button>
@@ -88,7 +88,7 @@ function Register() {
           <input
             name="phone"
             type="text"
-            placeholder="+94 712 345 567"
+            placeholder="+1 234 567 89"
             onChange={handleChange}
           />
           <label htmlFor="">Description</label>

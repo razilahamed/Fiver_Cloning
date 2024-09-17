@@ -1,12 +1,9 @@
-import React from 'react'
-import './Login.scss'
-import { useState } from 'react'
-import newRequest from '../../utils/newRequest'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from "react";
+import "./Login.scss";
+import newRequest from "../../utils/newRequest";
+import { useNavigate } from "react-router-dom";
 
-
-function Login () {
-
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
@@ -40,14 +37,13 @@ function Login () {
         <input
           name="password"
           type="password"
-          placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
         {error && error}
       </form>
     </div>
-  )
+  );
 }
 
-export default Login  
+export default Login;

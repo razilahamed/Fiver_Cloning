@@ -7,7 +7,7 @@ const upload = async (file) => {
 
   try {
     const res = await axios.post(import.meta.env.VITE_UPLOAD_LINK, data);
-    console.log("uploaded");
+
     const { url } = res.data;
     return url;
   } catch (err) {
